@@ -2,7 +2,7 @@
   "id": "./",
   "name": "Dominus – Formulare service",
   "short_name": "Dominus",
-  "description": "Patru formulare de service Dominus, disponibile offline după prima încărcare.",
+  "description": "Formulare de service Dominus, disponibile offline după prima încărcare.",
   "lang": "ro",
   "start_url": "./index.html",
   "scope": "./",
