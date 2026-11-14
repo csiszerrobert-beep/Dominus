@@ -1,45 +1,60 @@
 <!doctype html><html lang="ro"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Certificat de garanție – Dominus</title><link rel="manifest" href="./manifest.webmanifest"><style>
-*{box-sizing:border-box}body{font:16px system-ui,Arial;margin:0;background:#edf2f8;color:#1b3150}header{background:#152e51;color:white;padding:16px 20px}header img{width:180px;max-width:55vw;background:white;border-radius:8px;padding:6px}main{max-width:900px;margin:0 auto;padding:18px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}button,.back{background:#152e51;color:white;border:0;border-radius:9px;padding:12px 15px;font:inherit;cursor:pointer;text-decoration:none}.secondary{background:#566a80}.section{background:white;border:1px solid #d5deea;border-radius:12px;margin:14px 0;padding:16px}.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:12px}label{font-size:14px;font-weight:600;display:block}input,textarea{display:block;width:100%;margin-top:5px;padding:11px;border:1px solid #bac8d7;border-radius:7px;font:16px system-ui}textarea{min-height:90px}canvas{display:block;background:white;border:1px solid #bac8d7;border-radius:7px;width:100%;height:130px;touch-action:none}.signature{margin-top:12px;max-width:460px}.signature button{margin-top:6px;padding:7px 12px}.hint{font-size:14px;color:#50677f;line-height:1.5}.preview{overflow:auto}.sheet{position:relative;width:100%;aspect-ratio:792/612;background:white;margin:14px 0;box-shadow:0 2px 8px #aab4c2}.sheet>img.bg{display:block;width:100%;height:100%}.overlay{position:absolute;font:clamp(5px,1.1vw,10px) Arial;color:#111;white-space:pre-wrap;overflow:hidden;line-height:1.05;overflow-wrap:anywhere}.overlay.sig{object-fit:contain}h1{font-size:24px;margin:8px 0}h2{font-size:18px} @media print{@page{size:A4 landscape;margin:0}html,body{margin:0;padding:0;background:white}.no-print{display:none!important}main{padding:0;max-width:none}.preview{overflow:visible}.sheet{width:297mm;height:210mm;margin:0 auto;box-shadow:none;page-break-after:always;break-after:page;overflow:hidden}.sheet:last-child{page-break-after:auto;break-after:auto}.overlay{font-size:5.7pt!important;print-color-adjust:exact;-webkit-print-color-adjust:exact}} 
-</style></head><body><header class="no-print"><img src="logo-dominus.png" alt="Dominus"><h1>Certificat de garanție – cazane pe peleți</h1><div>Formularul 5 · V12 · model original 03.10.2025</div></header><main><div class="no-print"><div class="actions"><a class="back" href="index.html">← Meniu</a><button onclick="window.print()">Imprimă / Salvează PDF</button><button class="secondary" onclick="clearAll()">Șterge datele introduse</button></div><p class="hint">Completează datele mai jos. Se salvează automat doar pe acest telefon. La imprimare, datele și semnăturile sunt așezate pe cele două pagini originale. Verifică previzualizarea înainte de emitere. Rubricile fabricantului și vânzătorului se completează numai de persoanele autorizate. Data vânzării se afișează pe ambele pagini. Data punerii în funcțiune se afișează în două rubrici pe pagina 2.</p><div id="edit"></div><h2>Previzualizare certificat</h2></div><div class="preview" id="preview"><div class="sheet" id="page1"><img class="bg" src="certificat-pagina-1.jpg" alt="Pagina 1 certificat original"></div><div class="sheet" id="page2"><img class="bg" src="certificat-pagina-2.jpg" alt="Pagina 2 certificat original"></div></div><p class="hint no-print">PDF: alege „Imprimă / Salvează PDF”, apoi „Salvează ca PDF”. Pentru salvare PDF pe Android selectează A4 și orientarea Peisaj (orizontal), dacă este disponibil, fără margini și fără antet/subsol, dacă apar opțiunile. Documentul original este adaptat la A4 orizontal pentru imprimare.</p></main><script>
+*{box-sizing:border-box}body{font:16px system-ui,Arial;margin:0;background:#edf2f8;color:#1b3150}header{background:#152e51;color:white;padding:16px 20px}header img{width:180px;max-width:55vw;background:white;border-radius:8px;padding:6px}main{max-width:900px;margin:0 auto;padding:18px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}button,.back{background:#152e51;color:white;border:0;border-radius:9px;padding:12px 15px;font:inherit;cursor:pointer;text-decoration:none}.secondary{background:#566a80}.section{background:white;border:1px solid #d5deea;border-radius:12px;margin:14px 0;padding:16px}.fields{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:12px}label{font-size:14px;font-weight:600;display:block}input,textarea{display:block;width:100%;margin-top:5px;padding:11px;border:1px solid #bac8d7;border-radius:7px;font:16px system-ui}textarea{min-height:90px}.date-wrap{display:flex;align-items:center;gap:7px;margin-top:5px}.date-wrap input{margin-top:0;min-width:0;flex:1}.calendar-button{flex:none;min-width:52px;background:#e4b93b;color:#1b3150;font-weight:700;padding:11px 9px}.date-help{font-size:12px;color:#50677f;margin-top:4px}canvas{display:block;background:white;border:1px solid #bac8d7;border-radius:7px;width:100%;height:130px;touch-action:none}.signature{margin-top:12px;max-width:460px}.signature button{margin-top:6px;padding:7px 12px}.hint{font-size:14px;color:#50677f;line-height:1.5}.preview{overflow:auto}.sheet{position:relative;width:100%;aspect-ratio:792/612;background:white;margin:14px 0;box-shadow:0 2px 8px #aab4c2}.sheet>img.bg{display:block;width:100%;height:100%}.overlay{position:absolute;font:clamp(6px,1.0vw,11px) Arial;color:#111;white-space:pre-wrap;overflow:hidden;line-height:1.05;overflow-wrap:anywhere}.overlay.sig{object-fit:contain}h1{font-size:24px;margin:8px 0}h2{font-size:18px} @media print{@page{size:A4 landscape;margin:0}html,body{margin:0;padding:0;background:white}.no-print{display:none!important}main{padding:0;max-width:none}.preview{overflow:visible}.sheet{width:297mm;height:210mm;margin:0 auto;box-shadow:none;page-break-after:always;break-after:page;overflow:hidden}.sheet:last-child{page-break-after:auto;break-after:auto}.overlay{font-size:7pt!important;print-color-adjust:exact;-webkit-print-color-adjust:exact}} 
+</style></head><body><header class="no-print"><img src="logo-dominus.png" alt="Dominus"><h1>Certificat de garanție – cazane pe peleți</h1><div>Formularul 5 · V14 · model original 03.10.2025</div></header><main><div class="no-print"><div class="actions"><a class="back" href="index.html">← Meniu</a><button onclick="window.print()">Imprimă / Salvează PDF</button><button class="secondary" onclick="clearAll()">Șterge datele introduse</button></div><p class="hint">Completează datele mai jos. Se salvează automat doar pe acest telefon. La imprimare, datele și semnăturile sunt așezate pe cele două pagini originale. Verifică previzualizarea înainte de emitere. Rubricile fabricantului și vânzătorului se completează numai de persoanele autorizate. Apasă pe butonul 📅 pentru calendar; numerele de telefon acceptă doar cifre. Data vânzării se afișează pe ambele pagini. Data punerii în funcțiune se afișează în două rubrici pe pagina 2.</p><div id="edit"></div><h2>Previzualizare certificat</h2></div><div class="preview" id="preview"><div class="sheet" id="page1"><img class="bg" src="certificat-pagina-1.jpg" alt="Pagina 1 certificat original"></div><div class="sheet" id="page2"><img class="bg" src="certificat-pagina-2.jpg" alt="Pagina 2 certificat original"></div></div><p class="hint no-print">PDF: alege „Imprimă / Salvează PDF”, apoi „Salvează ca PDF”. Pentru salvare PDF pe Android selectează A4 și orientarea Peisaj (orizontal), dacă este disponibil, fără margini și fără antet/subsol, dacă apar opțiunile. Documentul original este adaptat la A4 orizontal pentru imprimare.</p></main><script>
 const fields=[
-["vanzator_firma","Firma vânzătorului",1,258,548,230,18],
-["vanzator_adresa","Adresa vânzătorului",1,258,578,230,18],
-["vanzator_telefon","Telefon vânzător",1,258,607,150,19],
-["vanzator_data","Data vânzării",1,259,671,138,18],
-["cumparator_nume","Nume și prenume cumpărător",1,259,738,240,20],
-["cumparator_adresa","Adresa cumpărătorului",1,259,789,240,24],
-["cumparator_telefon","Telefon cumpărător",1,259,850,230,20],
-["produs_tip","Tip dispozitiv (fabricant)",1,613,664,142,35],
-["produs_serie","Număr de serie",1,769,664,184,35],
-["produs_fabricatie","Data fabricației",1,962,664,186,35],
-["produs_combustibil","Combustibil",1,613,728,135,18],
-["produs_putere","Putere kW",1,775,728,169,18],
-["produs_verificat","Verificat de",1,708,795,112,18],
-["service_firma","Firma de service",2,810,143,275,18],
-["service_adresa","Adresa firmei de service",2,810,177,275,18],
-["service_telefon","Telefon firmă de service",2,810,210,200,18],
-["service_observatii","Observații service",2,620,353,535,94],
-["data_pif","Data punerii în funcțiune",2,880,450,200,19],
-["service_tip","Tip produs (service)",2,975,681,163,18],
-["service_combustibil","Combustibil / putere (service)",2,1012,707,130,18],
-["service_serie","Serie produs (service)",2,971,741,175,18]
+["vanzator_firma","Firma vânzătorului",1,224,548,274,21],
+["vanzator_adresa","Adresa vânzătorului",1,224,580,274,21],
+["vanzator_telefon","Telefon vânzător",1,225,612,174,21],
+["vanzator_data","Data vânzării",1,257,674,140,19],
+["cumparator_nume","Nume și prenume cumpărător",1,302,736,197,22],
+["cumparator_adresa","Adresa cumpărătorului",1,225,784,274,42],
+["cumparator_telefon","Telefon cumpărător",1,224,854,274,22],
+["produs_tip","Tip dispozitiv (fabricant)",1,615,663,142,40],
+["produs_serie","Număr de serie",1,768,663,181,40],
+["produs_fabricatie","Data fabricației",1,963,663,188,40],
+["produs_combustibil","Combustibil",1,615,724,142,22],
+["produs_putere","Putere kW",1,768,724,180,22],
+["produs_verificat","Verificat de",1,704,792,122,18],
+["service_firma","Firma de service",2,799,143,324,22],
+["service_adresa","Adresa firmei de service",2,800,175,322,22],
+["service_telefon","Telefon firmă de service",2,806,209,207,22],
+["service_observatii","Observații service",2,622,354,520,94],
+["data_pif","Data punerii în funcțiune",2,886,455,245,18],
+["service_tip","Tip produs (service)",2,971,682,188,21],
+["service_combustibil","Combustibil / putere (service)",2,1002,710,152,20],
+["service_serie","Serie produs (service)",2,960,742,195,20]
 ];const sigs=[
-["semnatura_vanzator","Semnătura vânzătorului",1,256,635,141,24],
-["semnatura_service","Semnătura service",2,836,234,179,25],
-["semnatura_pif","Semnătura punere în funcțiune",2,927,769,206,31]
+["semnatura_vanzator","Semnătura vânzătorului",1,256,635,140,25],
+["semnatura_service","Semnătura service",2,842,231,178,27],
+["semnatura_pif","Semnătura punere în funcțiune",2,932,774,207,30]
 ];const key='dominus-certificat-garantie-v9';let saved={};try{saved=JSON.parse(localStorage.getItem(key)||'{}')}catch(e){};
 const sections=[['Date vânzător',['vanzator_firma','vanzator_adresa','vanzator_telefon','vanzator_data']],['Date cumpărător',['cumparator_nume','cumparator_adresa','cumparator_telefon']],['Date produs – rezervate fabricantului',['produs_tip','produs_serie','produs_fabricatie','produs_combustibil','produs_putere','produs_verificat']],['Date firmă de service',['service_firma','service_adresa','service_telefon','service_observatii','data_pif','service_tip','service_combustibil','service_serie']]];
 function persist(){try{localStorage.setItem(key,JSON.stringify(saved))}catch(e){alert('Nu se pot salva datele pe dispozitiv.')}}
 function position(el,rec){let [id,label,p,x,y,w,h]=rec;Object.assign(el.style,{left:(x/1188*100)+'%',top:(y/918*100)+'%',width:(w/1188*100)+'%',height:(h/918*100)+'%'})}
-function update(id){for(let el of document.querySelectorAll('[data-field="'+id+'"]')){let value=saved[id]||'';if(el.tagName==='IMG'){el.src=value||'';el.style.display=value?'block':'none'}else el.textContent=value}}
-const map=Object.fromEntries(fields.map(r=>[r[0],r]));for(let [title,ids] of sections){let s=document.createElement('section');s.className='section';let h=document.createElement('h2');h.textContent=title;s.append(h);let grid=document.createElement('div');grid.className='fields';for(let id of ids){let rec=map[id],lab=document.createElement('label');lab.textContent=rec[1];let inp=document.createElement(id==='service_observatii'?'textarea':'input');inp.id=id;if(id==='vanzator_data'||id==='data_pif')inp.placeholder='ZZ.LL.AAAA';inp.value=saved[id]||'';inp.addEventListener('input',()=>{saved[id]=inp.value;persist();update(id)});lab.append(inp);grid.append(lab)}s.append(grid);document.getElementById('edit').append(s)}
-// Data vânzării este înscrisă automat și în tabelul de pe pagina a doua.
-const saleDate2=["vanzator_data", "Data vânzării – pagina 2",2,86,140,115,16];
+function toRO(v){if(!v)return '';if(/^\d{4}-\d{2}-\d{2}$/.test(v)){let [y,m,d]=v.split('-');return d+'.'+m+'.'+y}return v}
+function toISO(v){if(/^\d{2}\.\d{2}\.\d{4}$/.test(v)){let [d,m,y]=v.split('.');return y+'-'+m+'-'+d}return /^\d{4}-\d{2}-\d{2}$/.test(v)?v:''}
+function update(id){for(let el of document.querySelectorAll('[data-field="'+id+'"]')){let value=saved[id]||'';if(el.dataset.digits==='yes'){let match=toRO(value).match(/^(\d{2})\.(\d{2})\.(\d{4})$/);value=match?(match[1]+match[2]+match[3].slice(-2)):'';}
+if(el.tagName==='IMG'){el.src=value||'';el.style.display=value?'block':'none'}else el.textContent=value}}
+const map=Object.fromEntries(fields.map(r=>[r[0],r]));for(let [title,ids] of sections){let s=document.createElement('section');s.className='section';let h=document.createElement('h2');h.textContent=title;s.append(h);let grid=document.createElement('div');grid.className='fields';for(let id of ids){let rec=map[id],lab=document.createElement('label');lab.textContent=rec[1];let inp=document.createElement(id==='service_observatii'?'textarea':'input');inp.id=id;
+const dates=['vanzator_data','data_pif','produs_fabricatie'];
+const numeric=['vanzator_telefon','cumparator_telefon','service_telefon'];
+if(dates.includes(id)){inp.type='date';inp.lang='ro-RO';inp.value=toISO(saved[id]||'');inp.setAttribute('aria-label',rec[1]);}
+else {inp.value=saved[id]||'';if(numeric.includes(id)){inp.type='tel';inp.inputMode='numeric';inp.pattern='[0-9]*';inp.placeholder='Doar cifre';}else if(id==='produs_putere'){inp.inputMode='decimal';inp.placeholder='Ex.: 25';}}
+inp.addEventListener('input',()=>{
+ let val=inp.value;
+ if(numeric.includes(id))val=val.replace(/\D/g,'');
+ if(id==='produs_putere')val=val.replace(/[^0-9.,]/g,'').replace(',', '.');
+ if(inp.value!==val)inp.value=val;
+ saved[id]=dates.includes(id)?toRO(val):val;
+ persist();update(id)
+});if(dates.includes(id)){let wrap=document.createElement('div');wrap.className='date-wrap';wrap.append(inp);let cal=document.createElement('button');cal.type='button';cal.className='calendar-button';cal.textContent='📅';cal.setAttribute('aria-label','Deschide calendarul pentru '+rec[1]);cal.addEventListener('click',()=>{try{if(typeof inp.showPicker==='function'){inp.showPicker();return}}catch(e){}inp.focus();inp.click()});wrap.append(cal);lab.append(wrap);let help=document.createElement('div');help.className='date-help';help.textContent='Apasă pe 📅 pentru a alege data';lab.append(help)}else{lab.append(inp)}grid.append(lab)}s.append(grid);document.getElementById('edit').append(s)}
+// Suprapuneri numai în spațiile albe; căsuțele pentru date conțin șase cifre ZZLLAA.
 for(let rec of fields){let el=document.createElement('div');el.id='o_'+rec[0];el.dataset.field=rec[0];el.className='overlay';position(el,rec);document.getElementById('page'+rec[2]).append(el);update(rec[0])}
-// A doua aparitie a datei punerii in functiune, in casutele tabelului de jos.
-const pifDateTable=['data_pif','Data PIF – tabel',2,620,774,170,16];
-let pif2=document.createElement('div');pif2.dataset.field='data_pif';pif2.className='overlay';position(pif2,pifDateTable);document.getElementById('page2').append(pif2);update('data_pif');
-let sale2=document.createElement('div');sale2.dataset.field='vanzator_data';sale2.className='overlay';position(sale2,saleDate2);document.getElementById('page2').append(sale2);update('vanzator_data');
+function addDateBoxes(id,page,x,y,cellWidth){for(let i=0;i<6;i++){let el=document.createElement('div');el.className='overlay date-digit';el.style.textAlign='center';position(el,[id,'',page,x+i*cellWidth,y,cellWidth,22]);document.getElementById('page'+page).append(el);el.dataset.dateIndex=String(i);el.dataset.dateId=id;}}
+addDateBoxes('vanzator_data',2,35,137,27);
+addDateBoxes('data_pif',2,610,785,34);
+const oldUpdate=update;update=function(id){oldUpdate(id);document.querySelectorAll('[data-date-id="'+id+'"]').forEach(el=>{let v=toRO(saved[id]||'');let m=v.match(/^(\d{2})\.(\d{2})\.(\d{4})$/);let digits=m?m[1]+m[2]+m[3].slice(-2):'';el.textContent=digits[Number(el.dataset.dateIndex)]||''})};
+update('vanzator_data');update('data_pif');
 let activeCanvas=null;for(let rec of sigs){let [id,label]=rec;let s=document.createElement('section');s.className='section signature';let h=document.createElement('h2');h.textContent=label;s.append(h);let canvas=document.createElement('canvas');canvas.width=750;canvas.height=200;let ctx=canvas.getContext('2d');ctx.strokeStyle='#172f4d';ctx.lineWidth=3;ctx.lineCap='round';if(saved[id]){let img=new Image();img.onload=()=>ctx.drawImage(img,0,0,canvas.width,canvas.height);img.src=saved[id]}let drawing=false;function coord(e){let r=canvas.getBoundingClientRect();return [(e.clientX-r.left)*canvas.width/r.width,(e.clientY-r.top)*canvas.height/r.height]}canvas.addEventListener('pointerdown',e=>{drawing=true;canvas.setPointerCapture(e.pointerId);let [x,y]=coord(e);ctx.beginPath();ctx.moveTo(x,y)});canvas.addEventListener('pointermove',e=>{if(!drawing)return;let [x,y]=coord(e);ctx.lineTo(x,y);ctx.stroke()});function finish(){if(!drawing)return;drawing=false;saved[id]=canvas.toDataURL('image/png');persist();update(id)}canvas.addEventListener('pointerup',finish);canvas.addEventListener('pointercancel',finish);s.append(canvas);let clear=document.createElement('button');clear.textContent='Șterge semnătura';clear.className='secondary';clear.onclick=()=>{ctx.clearRect(0,0,canvas.width,canvas.height);delete saved[id];persist();update(id)};s.append(clear);document.getElementById('edit').append(s);let el=document.createElement('img');el.id='o_'+id;el.dataset.field=id;el.className='overlay sig';position(el,rec);document.getElementById('page'+rec[2]).append(el);update(id)}
 function clearAll(){if(!confirm('Ștergi toate datele și semnăturile din certificatul de garanție?'))return;localStorage.removeItem(key);location.reload()}
 </script></body></html>
