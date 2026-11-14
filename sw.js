@@ -1,5 +1,69 @@
-const CACHE='dominus-v15-final-3';
-const FILES=['./','./index.html','./verificari.html','./constatare.html','./reclamatie.html','./pompe_pif.html','./manifest.webmanifest','./icon-192.png','./icon-512.png','./logo-dominus.png','./certificat_garantie.html','./certificat-pagina-1.jpg','./certificat-pagina-2.jpg'];
-self.addEventListener('install',e=>{e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES)).then(()=>self.skipWaiting()))});
-self.addEventListener('activate',e=>{e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('dominus-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim()))});
-self.addEventListener('fetch',e=>{if(e.request.method!=='GET'||new URL(e.request.url).origin!==self.location.origin)return;e.respondWith(caches.match(e.request).then(hit=>hit||fetch(e.request)))});
+/* Dominus V15 — actualizare sigură a fișierelor, fără ștergerea datelor locale */
+const CACHE = 'dominus-v15-update-20261114-1';
+const ASSETS = [
+  './', './index.html', './verificari.html', './constatare.html',
+  './reclamatie.html', './pompe_pif.html', './certificat_garantie.html',
+  './manifest.webmanifest', './icon-192.png', './icon-512.png',
+  './logo-dominus.png', './certificat-pagina-1.jpg', './certificat-pagina-2.jpg'
+];
+
+self.addEventListener('install', event => {
+  event.waitUntil(
+    caches.open(CACHE).then(async cache => {
+      await Promise.all(ASSETS.map(async path => {
+        try {
+          const request = new Request(path, { cache: 'reload' });
+          const response = await fetch(request);
+          if (response.ok) await cache.put(path, response);
+        } catch (error) {
+          // Un fișier indisponibil nu blochează instalarea actualizării.
+        }
+      }));
+    }).then(() => self.skipWaiting())
+  );
+});
+
+self.addEventListener('activate', event => {
+  event.waitUntil(
+    caches.keys().then(keys => Promise.all(
+      keys.filter(key => key.startsWith('dominus-') && key !== CACHE)
+          .map(key => caches.delete(key))
+    )).then(() => self.clients.claim())
+  );
+});
+
+self.addEventListener('fetch', event => {
+  const req = event.request;
+  const url = new URL(req.url);
+  if (req.method !== 'GET' || url.origin !== self.location.origin) return;
+
+  // Navigarea către formulare: online = cea mai nouă versiune;
+  // offline = versiunea salvată local.
+  if (req.mode === 'navigate' || url.pathname.endsWith('.html')) {
+    event.respondWith(
+      fetch(new Request(req, { cache: 'no-store' }))
+        .then(response => {
+          if (response.ok) {
+            const copy = response.clone();
+            event.waitUntil(caches.open(CACHE).then(cache => cache.put(req, copy)));
+          }
+          return response;
+        })
+        .catch(async () => (await caches.match(req, {ignoreSearch: true})) ||
+          Response.error())
+    );
+    return;
+  }
+
+  event.respondWith(
+    caches.match(req, {ignoreSearch: true}).then(cached =>
+      cached || fetch(req).then(response => {
+        if (response.ok) {
+          const copy = response.clone();
+          event.waitUntil(caches.open(CACHE).then(cache => cache.put(req, copy)));
+        }
+        return response;
+      })
+    )
+  );
+});
