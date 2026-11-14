@@ -1,0 +1,7 @@
+DOMINUS V15 - PACHET COMPLET
+
+Deschide index.html pentru cele 5 formulare.
+Pentru instalare PWA pe telefon, publica toate fisierele impreuna pe un server HTTPS (de exemplu GitHub Pages).
+Formulare: verificari.html, constatare.html, reclamatie.html, pompe_pif.html, certificat_garantie.html.
+Certificatul este versiunea V15.3, cu imaginile integrate.
+Acest pachet NU a fost publicat pe GitHub.
