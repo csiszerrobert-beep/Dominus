@@ -1,5 +1,5 @@
-/* Dominus V18 — actualizare sigură a fișierelor, fără ștergerea datelor locale */
-const CACHE = 'dominus-v18-bara-unica-20261115-1';
+/* Dominus V19.3 — actualizare sigură a fișierelor, fără ștergerea datelor locale */
+const CACHE = 'dominus-v19-5-direct-pdf-20261115';
 const ASSETS = [
   './', './index.html', './verificari.html', './constatare.html',
   './reclamatie.html', './pompe_pif.html', './certificat_garantie.html', './certificat_garantie_pompe.html',
