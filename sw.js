@@ -1,5 +1,5 @@
-/* Dominus V17 — actualizare sigură a fișierelor, fără ștergerea datelor locale */
-const CACHE = 'dominus-v17-whatsapp-20261115-2';
+/* Dominus V18 — actualizare sigură a fișierelor, fără ștergerea datelor locale */
+const CACHE = 'dominus-v18-bara-unica-20261115-1';
 const ASSETS = [
   './', './index.html', './verificari.html', './constatare.html',
   './reclamatie.html', './pompe_pif.html', './certificat_garantie.html', './certificat_garantie_pompe.html',
