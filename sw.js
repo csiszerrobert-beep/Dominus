@@ -1,8 +1,8 @@
 /* Dominus V15 — actualizare sigură a fișierelor, fără ștergerea datelor locale */
-const CACHE = 'dominus-v15-update-20261114-1';
+const CACHE = 'dominus-v16-butoane-fixe-20261115-1';
 const ASSETS = [
   './', './index.html', './verificari.html', './constatare.html',
-  './reclamatie.html', './pompe_pif.html', './certificat_garantie.html',
+  './reclamatie.html', './pompe_pif.html', './certificat_garantie.html', './certificat_garantie_pompe.html',
   './manifest.webmanifest', './icon-192.png', './icon-512.png',
   './logo-dominus.png', './certificat-pagina-1.jpg', './certificat-pagina-2.jpg'
 ];
