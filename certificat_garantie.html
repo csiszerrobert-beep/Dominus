@@ -96,8 +96,81 @@ function clearAll(){if(!confirm('Ștergi toate datele și semnăturile din certi
   },true);
 })();
 </script>
-<nav class="dominus-bottom-nav" aria-label="Navigare formular"><button type="button" class="dominus-print-bottom" onclick="window.print()">🖨️ Imprimă / Salvează PDF</button><button type="button" id="dominus-go-top">↑ Sus</button><a href="index.html" id="dominus-back-menu">← Înapoi la meniu</a></nav><script id="dominus-bottom-nav-script">(function(){var back=document.getElementById('dominus-back-menu');back.addEventListener('click',function(){if(typeof window.save==='function'){try{window.save()}catch(e){}}});document.getElementById('dominus-go-top').addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})})})();</script><nav class="dominus-v17-bar no-print" aria-label="Acțiuni rapide"><button type="button" onclick="dominusV17Save()">💾 Salvare</button><button type="button" onclick="dominusV17Print()">🖨️ PDF</button><button type="button" onclick="dominusV17Email()">✉️ E-mail</button><button type="button" class="wa" onclick="dominusWhatsApp()">🟢 WhatsApp</button><button type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Sus</button><a href="index.html">← Meniu</a></nav><script id="dominus-v17-adapter">window.dominusV17Save=function(){try{if(typeof save==='function')return save();if(typeof saveData==='function')return saveData();if(typeof saveAll==='function')return saveAll();}catch(e){alert('Salvarea nu a reușit.');return;}alert('Datele acestui certificat sunt păstrate automat în browser, dacă este activată salvarea locală.');};window.dominusV17Print=function(){try{if(typeof save==='function')save();}catch(e){}window.print()};window.dominusV17Email=function(){if(typeof sendEmail==='function')return sendEmail();if(typeof email==='function')return email();alert('Salvează PDF-ul și atașează-l într-un e-mail.');};</script><script id="dominus-v17-share-script">(function(){
-let chooser;
-function pickFile(){if(!chooser){chooser=document.createElement('input');chooser.type='file';chooser.accept='application/pdf,.pdf';chooser.style.display='none';document.body.appendChild(chooser);chooser.addEventListener('change',async()=>{let file=chooser.files&&chooser.files[0];if(!file)return;try{if(navigator.canShare&&navigator.canShare({files:[file]})&&navigator.share){await navigator.share({files:[file],title:'Document Dominus'});}else{alert('Distribuirea fișierelor nu este disponibilă aici. Deschide WhatsApp și atașează PDF-ul salvat în Descărcări.');}}catch(e){if(e.name!=='AbortError')alert('Nu s-a putut distribui PDF-ul. Îl poți atașa manual în WhatsApp.');}chooser.value='';});}chooser.click();}
-window.dominusWhatsApp=()=>{try{if(typeof save==='function')save();else if(typeof saveData==='function')saveData();}catch(e){}let dlg=document.createElement('div');dlg.className='dominus-v17-dialog';dlg.style.cssText='position:fixed;inset:0;z-index:20000;background:#0009;display:flex;align-items:center;justify-content:center;padding:16px';dlg.innerHTML='<div style="max-width:420px;background:white;color:#19334e;border-radius:16px;padding:20px;font:15px system-ui;box-shadow:0 10px 30px #0003"><h2 style="margin:0 0 12px">Trimite PDF pe WhatsApp</h2><p>1. Apasă <b>Salvează PDF</b>, apoi alege <b>Salvează ca PDF</b> în dialogul Android.</p><p>2. Revino aici și apasă <b>Alege PDF și trimite</b>. Se va deschide distribuirea telefonului; selectează WhatsApp.</p><p style="font-size:12px">Dintr-o pagină web, salvarea automată și deschiderea directă a WhatsApp cu fișierul atașat nu pot fi garantate.</p><div style="display:grid;gap:8px"><button type="button" id="dv17print" style="padding:12px;background:#173d68;color:white;border:0;border-radius:8px">1. Salvează PDF</button><button type="button" id="dv17pick" style="padding:12px;background:#167743;color:white;border:0;border-radius:8px">2. Alege PDF și trimite</button><button type="button" id="dv17close" style="padding:10px;border:1px solid #aaa;border-radius:8px;background:white;color:#173d68">Închide</button></div></div>';document.body.appendChild(dlg);dlg.querySelector('#dv17print').onclick=()=>window.print();dlg.querySelector('#dv17pick').onclick=pickFile;dlg.querySelector('#dv17close').onclick=()=>dlg.remove();};
-})();</script></body></html>
+<nav class="dominus-bottom-nav" aria-label="Navigare formular"><button type="button" class="dominus-print-bottom" onclick="window.print()">🖨️ Imprimă / Salvează PDF</button><button type="button" id="dominus-go-top">↑ Sus</button><a href="index.html" id="dominus-back-menu">← Înapoi la meniu</a></nav><script id="dominus-bottom-nav-script">(function(){var back=document.getElementById('dominus-back-menu');back.addEventListener('click',function(){if(typeof window.save==='function'){try{window.save()}catch(e){}}});document.getElementById('dominus-go-top').addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})})})();</script><nav class="dominus-v17-bar no-print" aria-label="Acțiuni rapide"><button type="button" onclick="dominusV17Save()">💾 Salvare</button><button type="button" onclick="dominusV17Print()">🖨️ PDF</button><button type="button" onclick="dominusV17Email()">✉️ E-mail</button><button type="button" class="wa" onclick="dominusWhatsApp()">🟢 WhatsApp</button><button type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑ Sus</button><a href="index.html">← Meniu</a></nav><script id="dominus-v17-adapter">window.dominusV17Save=function(){try{if(typeof save==='function')return save();if(typeof saveData==='function')return saveData();if(typeof saveAll==='function')return saveAll();}catch(e){alert('Salvarea nu a reușit.');return;}alert('Datele acestui certificat sunt păstrate automat în browser, dacă este activată salvarea locală.');};window.dominusV17Print=function(){try{if(typeof save==='function')save();}catch(e){}window.print()};window.dominusV17Email=function(){if(typeof sendEmail==='function')return sendEmail();if(typeof email==='function')return email();alert('Salvează PDF-ul și atașează-l într-un e-mail.');};</script><script id="dominus-v1910-layout-pdf">
+(function(){
+'use strict';
+let busy=false, loading=null;
+function libraries(){
+ if(loading)return loading;
+ function load(src,check){return new Promise((resolve,reject)=>{if(check())return resolve();const el=document.createElement('script');el.src=src;el.onload=()=>check()?resolve():reject(new Error('Biblioteca nu a pornit'));el.onerror=()=>reject(new Error('Nu se poate încărca biblioteca. Verifică internetul.'));document.head.appendChild(el);});}
+ loading=Promise.all([load('https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js',()=>!!window.html2canvas),load('https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js',()=>!!window.jspdf?.jsPDF)]).catch(e=>{loading=null;throw e});return loading;
+}
+function fileName(){const d=new Date().toISOString().slice(0,10);let name=prompt('Numele PDF-ului de test:',`Dominus_certificat_garantie_V19.10_${d}.pdf`);if(name===null)return null;name=name.trim().replace(/[\\/:*?"<>|\x00-\x1f]/g,'_').replace(/\.+$/,'');return name?(name.toLowerCase().endsWith('.pdf')?name:name+'.pdf'):null;}
+function waitImages(root){return Promise.all(Array.from(root.querySelectorAll('img')).map(im=>im.complete?Promise.resolve():new Promise(r=>{im.addEventListener('load',r,{once:true});im.addEventListener('error',r,{once:true});setTimeout(r,5000)})));}
+async function renderDocument(){
+ const sheets=[...document.querySelectorAll('.sheet')];
+ if(!sheets.length)throw new Error('Nu au fost găsite paginile certificatului.');
+ const canvases=[];
+ for(const sheet of sheets){
+  const previous=sheet.getAttribute('style');
+  sheet.style.width='1122px';sheet.style.height='794px';sheet.style.margin='0';
+  try{
+   await waitImages(sheet);
+   const c=await window.html2canvas(sheet,{backgroundColor:'#ffffff',scale:1.4,useCORS:true,logging:false,scrollX:0,scrollY:0});
+   if(c.width<500||c.height<350)throw new Error('Pagina certificatului este goală.');
+   canvases.push(c);
+  }finally{if(previous===null)sheet.removeAttribute('style');else sheet.setAttribute('style',previous)}
+ }
+ return canvases;
+}
+function pdfFromCanvas(canvases,name){
+ const pdf=new window.jspdf.jsPDF({unit:'mm',format:'a4',orientation:'landscape',compress:true});
+ canvases.forEach((canvas,i)=>{
+  if(i)pdf.addPage('a4','landscape');
+  pdf.addImage(canvas.toDataURL('image/jpeg',0.94),'JPEG',0,0,297,210);
+ });
+ return new File([pdf.output('blob')],name,{type:'application/pdf'});
+}
+function download(file){const url=URL.createObjectURL(file),a=document.createElement('a');a.href=url;a.download=file.name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),60000)}
+
+let preparedFile=null;
+function showReady(file){
+ preparedFile=file;
+ let dialog=document.getElementById('dominus-v197-ready');
+ if(!dialog){
+  dialog=document.createElement('div');dialog.id='dominus-v197-ready';
+  dialog.style.cssText='position:fixed;inset:0;z-index:2147483647;background:#0009;display:flex;align-items:center;justify-content:center;padding:18px';
+  dialog.innerHTML='<div style="background:white;color:#173253;border-radius:16px;padding:22px;max-width:430px;width:100%;box-shadow:0 8px 35px #0004"><h2 style="margin:0 0 10px">PDF pregătit – V19.12 TEST</h2><p id="dominus-v197-name" style="overflow-wrap:anywhere"></p><p style="font-size:13px">Apasă „Salvează și distribuie” pentru a descărca PDF-ul în telefon și a deschide meniul Android. Dacă descărcarea este blocată de browser, folosește „Descarcă PDF”.</p><button type="button" id="dominus-v197-share" style="width:100%;margin:5px 0">🟢 Salvează și distribuie</button><button type="button" id="dominus-v197-save" class="secondary" style="width:100%;margin:5px 0">Descarcă PDF</button><button type="button" id="dominus-v197-close" class="secondary" style="width:100%;margin:5px 0">Închide</button></div>';
+  document.body.appendChild(dialog);
+  document.getElementById('dominus-v197-share').addEventListener('click',()=>{
+   // Call share immediately from a fresh user gesture, with no await beforehand.
+   if(!preparedFile)return;
+   if(!navigator.share||!navigator.canShare?.({files:[preparedFile]})){alert('Distribuirea fișierelor nu este disponibilă aici. Folosește „Descarcă PDF”.');return}
+   download(preparedFile); // Best-effort browser download; Android may ask permission or block it.
+   navigator.share({files:[preparedFile],title:'Dominus – certificat garantie'}).catch(e=>{if(e.name!=='AbortError')alert('Distribuirea nu a pornit: '+e.message)});
+  });
+  document.getElementById('dominus-v197-save').addEventListener('click',()=>{if(preparedFile)download(preparedFile)});
+  document.getElementById('dominus-v197-close').addEventListener('click',()=>{dialog.style.display='none'});
+ }
+ document.getElementById('dominus-v197-name').textContent=file.name;
+ dialog.style.display='flex';
+}
+window.dominusWhatsApp=async function(){
+ if(busy)return;
+ const name=fileName();if(!name)return;
+ busy=true;
+ const button=document.querySelector('.dominus-v17-bar .wa'),old=button?.textContent;
+ if(button){button.disabled=true;button.textContent='Pregătesc PDF...'}
+ try{
+  await libraries();
+  const canvas=await renderDocument();
+  const file=pdfFromCanvas(canvas,name);
+  showReady(file); window.dominusClientCommit?.();
+ }catch(e){
+  console.error('Dominus V19.10:',e);
+  alert('Testul V19.10 nu a reușit: '+e.message+'\nFolosește PDF / Imprimă pentru documentul original.');
+ }finally{busy=false;if(button){button.disabled=false;button.textContent=old}}
+};
+
+})();
+</script><script src="./dominus-client-auto.js?v=1929"></script><script src="./dominus-autofill.js?v=1931"></script></body></html>
