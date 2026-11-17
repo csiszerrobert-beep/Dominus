@@ -1,8 +1,2 @@
-DOMINUS V19.33.3 TEST – iOS PDF direct, fara fereastra PDF pregatit.
-Incarcati numai in dominus-v19-test. Aplicatia principala nu se modifica.
-Safari poate solicita confirmarea descarcarii.
-
-
-V19.33.4 TEST: iOS – PDF fara dialog DOMINUS; WhatsApp cu pasi separati de salvare si distribuire, pentru a evita ferestre suprapuse. Safari poate cere confirmare; nu se poate garanta salvarea automata in Files.
-
-Versiune principala: DOMINUS V19.33.4 FINAL (afisaj: DOMINUS V19.33.4).
+DOMINUS V19.33.5 FINAL
+Corectare duplicate la salvarea aceluiași raport + nume și prenume cu inițială mare automat (ex. Cornel Petrescu). Denumirile firmelor cu SRL/SA/PFA sunt păstrate. Pentru aplicația principală Dominus. Nu șterge datele browserului.

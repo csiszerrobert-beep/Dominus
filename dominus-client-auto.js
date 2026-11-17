@@ -1,4 +1,4 @@
-/* Dominus V19.30 TEST - salvare exclusiv la export si istoric documente. */
+/* DOMINUS V19.33.5 TEST - un document per formular, indiferent de cate exporturi se fac. */
 (function(){'use strict';
 const KEY='dominus-clienti-v1', EQUIPMENT_KEY='dominus-echipamente-v1';
 const maps={
@@ -33,16 +33,26 @@ function field(id){return [...document.querySelectorAll('input,textarea,select')
 function draft(){if(!map.draft)return {};try{return JSON.parse(localStorage.getItem(map.draft)||'{}')||{}}catch(e){return {}}}
 function get(id){if(!id)return '';const el=field(id);return norm(el?el.value:draft()[id])}
 function mirrorName(){if(!map.sign)return;const a=field(map.name),b=field(map.sign);if(a&&b&&a!==b&&b.value!==norm(a.value)){b.value=norm(a.value);b.dispatchEvent(new Event('input',{bubbles:false}))}}
+// ID stabil pentru raportul curent: supravietuieste reimprimarii si reincarcarii filei.
+const DOC_SESSION_KEY='dominus-document-session-v19335:'+page;
+function newId(){return (crypto.randomUUID?.()||String(Date.now())+'-'+Math.random())}
+let currentDocId;
+try{currentDocId=sessionStorage.getItem(DOC_SESSION_KEY);if(!currentDocId){currentDocId=newId();sessionStorage.setItem(DOC_SESSION_KEY,currentDocId)}}catch(_){currentDocId=newId()}
+window.dominusClientNewDocument=function(){
+ currentDocId=newId();
+ try{sessionStorage.setItem(DOC_SESSION_KEY,currentDocId)}catch(_){}
+};
 let lastSignature='',lastAt=0;
 function commit(){
  try{
+  const nameEl=field(map.name);if(nameEl&&window.dominusNameCase)nameEl.value=window.dominusNameCase(nameEl.value);
   mirrorName();
-  const d={name:get(map.name),phone:get(map.phone),email:get(map.email),address:get(map.address)};
+  const d={name:(window.dominusNameCase?window.dominusNameCase(get(map.name)):get(map.name)),phone:get(map.phone),email:get(map.email),address:get(map.address)};
   if(fold(d.name).length<3)return false;
   const p=phone(d.phone);if(d.phone&&!p){if(!d.address&&!d.email)return false;d.phone='';}
   if(!p&&!d.address&&!d.email)return false;
   const signature=[fold(d.name),p,fold(d.address),fold(d.email),map.title].join('|');
-  const now=Date.now();if(signature===lastSignature&&now-lastAt<12000)return true;
+  const now=Date.now();
   let list=JSON.parse(localStorage.getItem(KEY)||'[]');if(!Array.isArray(list))return false;
   const name=fold(d.name),address=fold(d.address),email=fold(d.email);
   let i=list.findIndex(c=>fold(c.name)===name&&((p&&phone(c.phone)===p)||(address&&fold(c.address)===address)||(email&&fold(c.email)===email)));
@@ -50,7 +60,8 @@ function commit(){
   if(i<0){list.push({id:(crypto.randomUUID?.()||String(now)+'-'+Math.random()),...d,notes:'',documents:[]});i=list.length-1}
   const c=list[i];for(const k of ['phone','email','address'])if(d[k]&&!norm(c[k]))c[k]=d[k];
   if(!Array.isArray(c.documents))c.documents=[];
-  c.documents.push({id:(crypto.randomUUID?.()||String(now)+'-'+Math.random()),type:map.title,date:new Date().toISOString(),source:page});
+  if(!c.documents.some(x=>x&&x.id===currentDocId))
+    c.documents.push({id:currentDocId,type:map.title,date:new Date().toISOString(),source:page});
   // Registrul echipamentelor: se actualizează doar la exportul documentului.
   // Clientul este identificat mai întâi; niciun echipament nu se salvează în timpul tastării.
   const em=map.equipment||{};
@@ -73,7 +84,8 @@ function commit(){
       const today=new Date(); const dateLocal=[today.getFullYear(),String(today.getMonth()+1).padStart(2,'0'),String(today.getDate()).padStart(2,'0')].join('-');
       if(!device.lastRevisionDate||dateLocal>device.lastRevisionDate)device.lastRevisionDate=dateLocal;
     }
-    device.documents.push({id:(crypto.randomUUID?.()||String(now)+'-doc-'+Math.random()),type:map.title,date:new Date().toISOString(),source:page});
+    if(!device.documents.some(x=>x&&x.id===currentDocId))
+      device.documents.push({id:currentDocId,type:map.title,date:new Date().toISOString(),source:page});
     try{localStorage.setItem(EQUIPMENT_KEY,JSON.stringify(equipments))}catch(e){console.warn('Dominus: registrul echipamentelor nu a putut fi salvat.',e)}
   }
   localStorage.setItem(KEY,JSON.stringify(list));lastSignature=signature;lastAt=now;return true;
@@ -81,7 +93,7 @@ function commit(){
 }
 window.dominusClientCommit=commit;
 document.addEventListener('input',e=>{if(e.target===field(map.name))mirrorName()},true);
-document.addEventListener('change',e=>{if(e.target===field(map.name))mirrorName()},true);
+document.addEventListener('change',e=>{if(e.target===field(map.name)){if(window.dominusNameCase)e.target.value=window.dominusNameCase(e.target.value);mirrorName()}},true);
 window.addEventListener('beforeprint',commit);
 document.addEventListener('click',e=>{const btn=e.target.closest('button');if(!btn)return;const action=(btn.getAttribute('onclick')||'').toLowerCase();if(action.includes('print()')||action.includes('dominusv17print()'))commit()},true);
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mirrorName);else mirrorName();
